@@ -1,235 +1,275 @@
-// #include <iostream>
-// #include <string>
-// using namespace std;
+#include <iostream>
+#include <string>
+using namespace std;
 
-// class Person
-// {
-// public:
-//     string name;
-//     int age;
+// ======================================================
+// 1. SINGLE INHERITANCE
+// ======================================================
 
-//     Person(string name, int age)
-//     {
-//         this->name = name;
-//         this->age = age;
-//     }
+class Person1
+{
+public:
+    string name;
+    int age;
 
-// };
-// class Student : public Person
-// {
+    Person1(string n, int a)
+    {
+        name = n;
+        age = a;
+    }
+};
 
-// public:
-//     int rollNo;
-//     Student(string name, int age, int rollNo) : Person(name, age)
-//     {
-//         this->rollNo = rollNo;
-//     }
+class Student1 : public Person1
+{
+public:
+    int rollNo;
 
-//     void getInfo()
-//     {
-//         cout << "name : " << name << endl;
-//         cout << "age : " << age << endl;
-//         cout << "rollNo : " << rollNo << endl;
-//     }
-// };
-// int main()
-// {
-//     Student s1("Rupesh Londhe", 21, 322);
-//     s1.getInfo();
-//     return 0;
-// }
+    Student1(string n, int a, int r) : Person1(n, a)
+    {
+        rollNo = r;
+    }
 
-
-// Multilevel Inheritance //
-// #include <iostream>
-// #include <string>
-// using namespace std;
-
-// class Person
-// {
-// public:
-//     string name;
-//     int age;
-// };
-// class Student : public Person
-// {
-
-// public:
-//     int rollNo;
- 
-// };
-// class GraduateStudent : public Student
-// {
-//     public:
-//     string researchArea;
-
-// };
-// int main()
-// {
-//    GraduateStudent gs;
-//    gs.name = "Rupesh Londhe";
-//     gs.age = 21;
-//     gs.rollNo = 322;
-//     gs.researchArea = "Artificial Intelligence";
-
-//     cout << "name : " << gs.name << endl;
-//     cout << "age : " << gs.age << endl; 
-//     cout << "rollNo : " << gs.rollNo << endl;
-//     cout << "researchArea : " << gs.researchArea << endl;
-//     return 0;
-// }
+    void getInfo()
+    {
+        cout << "\n--- Single Inheritance ---" << endl;
+        cout << "Name    : " << name << endl;
+        cout << "Age     : " << age << endl;
+        cout << "Roll No : " << rollNo << endl;
+    }
+};
 
 
-// multiple Inheritance //
-// #include <iostream>
-// #include <string>
-// using namespace std;
+// ======================================================
+// 2. MULTILEVEL INHERITANCE
+// ======================================================
 
-// class Student{
-    
-//     public:
-//     string name;
-//     int rollNo;
-// };
-// class Teacher{
-//     public:
-//     string subject;
-//     int salary;
-// };
-// class TA : public Student, public Teacher{
-//     public:
-//     void getInfo(){
-//         cout << "name : " << name << endl;
-//         cout << "rollNo : " << rollNo << endl;
-//         cout << "subject : " << subject << endl;
-//         cout << "salary : " << salary << endl;
-//     }
+class Person2
+{
+public:
+    string name;
+    int age;
+};
 
-// };
+class Student2 : public Person2
+{
+public:
+    int rollNo;
+};
 
-// int main()
-// { TA t1;
-//     t1.name = "Rupesh Londhe";
-//     t1.rollNo = 322;
-//     t1.subject = "Artificial Intelligence";
-//     t1.salary = 50000;
-//     t1.getInfo();
-  
-//     return 0;
-// }
+class GraduateStudent : public Student2
+{
+public:
+    string researchArea;
+
+    void getInfo()
+    {
+        cout << "\n--- Multilevel Inheritance ---" << endl;
+        cout << "Name          : " << name << endl;
+        cout << "Age           : " << age << endl;
+        cout << "Roll No       : " << rollNo << endl;
+        cout << "Research Area : " << researchArea << endl;
+    }
+};
 
 
-// Hierarchical Inheritance //
+// ======================================================
+// 3. MULTIPLE INHERITANCE
+// ======================================================
+
+class Student3
+{
+public:
+    string studentName;
+    int rollNo;
+};
+
+class Teacher3
+{
+public:
+    string subject;
+    int salary;
+};
+
+class TA : public Student3, public Teacher3
+{
+public:
+    void getInfo()
+    {
+        cout << "\n--- Multiple Inheritance ---" << endl;
+        cout << "Name    : " << studentName << endl;
+        cout << "Roll No : " << rollNo << endl;
+        cout << "Subject : " << subject << endl;
+        cout << "Salary  : " << salary << endl;
+    }
+};
 
 
-// #include <iostream>
-// using namespace std;
+// ======================================================
+// 4. HIERARCHICAL INHERITANCE
+// ======================================================
 
-// class Person
-// {
-// public:
-//     string name;
-//     int age;
-    
-// };
-// class Student : public Person
-// {
-//     public:
-//     int rollNo;
-// };
-// class Teacher : public Person{
-//     public:
-//     string subject;
-// };
-// int main()
-// {
-//     Student s1;
-//     s1.name = "Rupesh Londhe";
-//     s1.age = 21;
-//     s1.rollNo = 322;
+class Person4
+{
+public:
+    string name;
+    int age;
+};
 
-//     Teacher t1;
-//     t1.name = "John Doe";
-//     t1.age = 35;
-//     t1.subject = "Mathematics";
+class Student4 : public Person4
+{
+public:
+    int rollNo;
 
-//     cout << "Student Info:" << endl;
-//     cout << "Name: " << s1.name << endl;
-//     cout << "Age: " << s1.age << endl;
-//     cout << "Roll No: " << s1.rollNo << endl;
+    void getStudentInfo()
+    {
+        cout << "\n--- Hierarchical Inheritance - Student ---" << endl;
+        cout << "Name    : " << name << endl;
+        cout << "Age     : " << age << endl;
+        cout << "Roll No : " << rollNo << endl;
+    }
+};
 
-//     cout << "\nTeacher Info:" << endl;
-//     cout << "Name: " << t1.name << endl;
-//     cout << "Age: " << t1.age << endl;
-//     cout << "Subject: " << t1.subject << endl;
+class Teacher4 : public Person4
+{
+public:
+    string subject;
 
-//     return 0;
-// }
+    void getTeacherInfo()
+    {
+        cout << "\n--- Hierarchical Inheritance - Teacher ---" << endl;
+        cout << "Name    : " << name << endl;
+        cout << "Age     : " << age << endl;
+        cout << "Subject : " << subject << endl;
+    }
+};
 
 
-//hybrid Inheritance //
+// ======================================================
+// 5. HYBRID INHERITANCE
+// ======================================================
 
-// #include <iostream>
-// using namespace std;
+class Person5
+{
+public:
+    string name;
 
-// // Base class
-// class Person
-// {
-// public:
-//     string name;
+    void getName()
+    {
+        cout << "Name : " << name << endl;
+    }
+};
 
-//     void getName()
-//     {
-//         cout << "Name: " << name << endl;
-//     }
-// };
+class Student5 : virtual public Person5
+{
+public:
+    int rollNo;
 
-// // Derived class 1
-// class Student : public Person
-// {
-// public:
-//     int rollNo;
+    void getStudent()
+    {
+        cout << "Roll No : " << rollNo << endl;
+    }
+};
 
-//     void getStudent()
-//     {
-//         cout << "Roll No: " << rollNo << endl;
-//     }
-// };
+class Teacher5 : virtual public Person5
+{
+public:
+    string subject;
 
-// // Derived class 2
-// class Teacher : public Person
-// {
-// public:
-//     string subject;
+    void getTeacher()
+    {
+        cout << "Subject : " << subject << endl;
+    }
+};
 
-//     void getTeacher()
-//     {
-//         cout << "Subject: " << subject << endl;
-//     }
-// };
+class College : public Student5, public Teacher5
+{
+public:
+    void display()
+    {
+        cout << "\n--- Hybrid Inheritance ---" << endl;
+        getName();
+        getStudent();
+        getTeacher();
+    }
+};
 
-// // Multiple inheritance
-// class College : public Student, public Teacher
-// {
-// public:
-//     void display()
-//     {
-//         cout << "College Student/Teacher Information" << endl;
-//     }
-// };
 
-// int main()
-// {
-//     College c1;
+// ======================================================
+// MAIN FUNCTION
+// ======================================================
 
-//     c1.Student::name = "Rupesh";
-//     c1.rollNo = 322;
-//     c1.subject = "C++";
+int main()
+{
+    // --------------------------------------------------
+    // 1. SINGLE INHERITANCE
+    // --------------------------------------------------
 
-//     c1.Student::getName();
-//     c1.getStudent();
-//     c1.getTeacher();
-//     c1.display();
+    Student1 s1("Rupesh Londhe", 21, 322);
+    s1.getInfo();
 
-//     return 0;
-// }
+
+    // --------------------------------------------------
+    // 2. MULTILEVEL INHERITANCE
+    // --------------------------------------------------
+
+    GraduateStudent gs;
+
+    gs.name = "Rupesh Londhe";
+    gs.age = 21;
+    gs.rollNo = 322;
+    gs.researchArea = "Artificial Intelligence";
+
+    gs.getInfo();
+
+
+    // --------------------------------------------------
+    // 3. MULTIPLE INHERITANCE
+    // --------------------------------------------------
+
+    TA ta;
+
+    ta.studentName = "Rupesh";
+    ta.rollNo = 322;
+    ta.subject = "C++";
+    ta.salary = 25000;
+
+    ta.getInfo();
+
+
+    // --------------------------------------------------
+    // 4. HIERARCHICAL INHERITANCE
+    // --------------------------------------------------
+
+    Student4 s4;
+
+    s4.name = "Rupesh";
+    s4.age = 21;
+    s4.rollNo = 322;
+
+    s4.getStudentInfo();
+
+
+    Teacher4 t4;
+
+    t4.name = "John Doe";
+    t4.age = 35;
+    t4.subject = "Mathematics";
+
+    t4.getTeacherInfo();
+
+
+    // --------------------------------------------------
+    // 5. HYBRID INHERITANCE
+    // --------------------------------------------------
+
+    College c1;
+
+    c1.name = "Rupesh";
+    c1.rollNo = 322;
+    c1.subject = "C++";
+
+    c1.display();
+
+
+    return 0;
+}
